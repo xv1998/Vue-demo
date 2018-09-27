@@ -1,0 +1,17 @@
+﻿.active{
+	color:red;
+	border:dashed;
+}
+body{
+	margin:0 auto ;
+}
+div{
+	padding: 20px;
+	margin: 10px;
+	display: block;
+	background-color: darkgrey;
+}
+.blog-post{
+	margin: 5px;
+	display: block;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>INDEX</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="vue.js" ></script>
+</head>
+<body>
+<!------安装-------->
+<div id="download">
+    <h3>安装</h3>
+    <p>
+        直接下载并用script 标签引入，Vue 会被注册为一个全局变量。
+    </p>
+    <p>
+        如果你需要在客户端编译模板 (比如传入一个字符串给 template 选项，或挂载到一个元素上并以其 DOM 内部的 HTML 作为模板)，就将需要加上编译器，即完整版：
+    </p>
+        <pre>
+            // 需要编译器
+            new Vue({
+            template: '(div){{ hi }}(/div)'
+            })
+
+            // 不需要编译器
+            new Vue({
+            render (h) {
+            return h('div', this.hi)
+            }
+            })
+        </pre>
+</div>
+
+<!------介绍-------->
+<div id="introduction">
+    <h3>介绍</h3>
+    <ol>
+        <li v-for="todo in todos" v-bind:title="message">{{todo.text}}</li>
+    </ol>
+    <button v-on:click="reverseMessage">逆转消息</button>
+    <p>{{mess}}</p>
+    <input v-model="mess">
+</div>
+
+<!------Vue实例------>
+<div id="example">
+    <h3>Vue实例</h3>
+    <p>{{data.a}}</p>
+    <button v-on:click="a = 'baz'">防止追踪</button>
+</div>
+
+<!-----模板语法----->
+<div id="grammer">
+    <h3>模板语法</h3>
+    <ol>
+        <li v-once>一个不会改变的数据：{{message}}</li>
+    </ol>
+
+</div>
+
+<!----Class 与 Style 绑定--->
+<div id="styles">
+    <h3>Class 与 Style 绑定</h3>
+    <p  v-bind:class="isActive">传给 v-bind:class 一个对象，以动态地切换 class</p>
+    <p  v-bind:style="myStyle">用v-bind:style直接绑定到一个内联样式对象</p>
+    <button v-on:click="Change">变换外联文本颜色</button>
+</div>
+
+<!-----条件渲染----->
+<div id="condition">
+    <h3>条件渲染</h3>
+    <template v-if="key">
+        <p >v-else元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面</p>
+        <p  v-show="ok">噢，被你发现了</p>
+    </template>
+    <template v-else>
+        <p >v-show 只是简单地切换元素的 CSS 属性 display。</p>
+    </template>
+    <button v-on:click="change">换一个</button>
+    <button v-on:click="show">显示隐藏的文字</button>
+</div>
+
+<!------列表渲染----->
+<div id="list">
+    <h3>列表渲染</h3>
+    <ul v-for="(value,index) in todos":key="value.id">
+        <li>{{index}}:{{value}}</li>
+    </ul>
+</div>
+
+<!-------事件处理---->
+<div id="event">
+    <h3>事件处理</h3>
+        <div v-on:click="dodo">
+            <input v-on:keyup.enter="submit" value="通过enter提交">
+            <button v-on:click.stop="dothis">阻止单击事件继续传播</button>
+        </div>
+</div>
+
+<!-------表单输入---->
+<div id="form">
+    <h3>表单输入</h3>
+    <textarea v-model="pick" ></textarea>
+    <span>{{pick}}</span></br>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">label的for 属性规定 label 与哪个表单元素绑定。</label>
+    <br>
+    <input type="radio" id="two"  v-model="picked" v-bind:value="{num:123}" >
+    <label for="two">此时v-bind:value值绑定位two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+</div>
+
+<!------组件---->
+<div id="component">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-on:enlarge-text="postFontSize += 0.1"
+        ></blog-post>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
